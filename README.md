@@ -1,73 +1,61 @@
 
-# Mid-East Pharmaceutical – Stock Availability
+# NYC Yellow Taxi Data – Recommender Systems
 
 
 
 ## Overview
 
-Mid-East Canadian Pharmaceutical (MECP) is a medical company specializing in providing cold 
-supply chain solutions for medical equipment to various entities. With an extensive inventory of 
-over 508,000 medical products, they aim to leverage publicly available data from their suppliers 
-to identify in-demand medical products at specific times throughout the year. The goal is to 
-develop a training model using existing data to forecast periods of increased demand for specific 
-medical products. This predictive capability enables them to proactively stock these products 
-ahead of the demand curve, ensuring timely availability and efficient supply chain management.
+New York Taxi and Limousine Commission provides dataset for its yellow taxis every month. This includes the datetime, fare amount, trip distance etc. We aim to leverage the dataset by recommending taxi drivers the optimal location and time for picking up passengers to maximize their profits. The goal is to develop a training model that can create clusters of high-density areas at each hour of the day for each day in the week such that taxi drivers can optimize their pickup trips and maximize their profits. 
+
+ 
 
 
 ## Dataset
 
-Based on the information provided by the MECP, the dataset needs to be scrapped from internet 
-using a crawler script. From our initial understanding, the dataset contains,
+The Yellow Taxi dataset of 2023 consists of a set of columns but for this research question, we are mainly focussed on the following columns, 
 
-1. **Name(varchar):** Name of product.
-2. **Description (varchar):** Description of product.
-3. **Catalogue Number:** Unique identifier for product in catalogue.
-4. **Price(float):** Price of product.
-5. **Availability (varchar):** Availability status of product.
-6. **Manufacturer Number(int):** Identifier for manufacturer of product.
-7. **Invoice Description (varchar):** Product description on invoice.
-8. **Feature Property (varchar):** Specific features of product.
-9. **Sterility(bool):** Sterility status of product.
-10. **Link (varchar):** URL link for more information about product.
-11. **Brand Name (varchar):** Name of brand associated with product.
-12. **Outer Diameter(float):** Outer diameter measurement of product.
-13. **Needle Length(float):** Length of needle
-14. **Volume(float):** Volume measurement of product.
-15. **Color (varchar):** Color of product.
-16. **Inner Diameter(float):** Inner diameter of product.
-17. **Size (varchar):** Size specification of product.
-18. **Age(datetime):** Age-related information (e.g., expiration date).
-19. **Shape (varchar):** Shape of product.
-20. **Catheter Length(float):** Length of catheter (if applicable).
-21. **Composition Ingredient(varchar):** Composition or ingredients of product.
+tpep_pickup_datetime – The taxi’s pickup date and time  
+tpep_dropoff_datetime – The taxi’s dropoff date and time 
+Trip_distance – The total trip distance covered by the taxi 
+PULocationID – The Pickup location ID of the taxi. ID can be referenced by another document 		   which has the location for each ID 
+Pickup_longitude – The pickup location’s longitute 
+Pickup_latitude – The pickup location’s latitute 
+Dropoff_longitude – The pickup location’s longitute 
+Dropoff_latitude – The pickup location’s latitute 
+Fare_amount – The total fare for the trip calculated by the meter 
+Tip_amount – Tip amount provided by the passenger 
+Total_amount – The combined amount of fare and tips amount which excludes other data like toll amount, mta_tax, extra fee and airport charge.  
 
+This dataset is derived from the New York City TLC website,  
+[NYC Dataset] {https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page}
 
 ## Research Question
 
-Based upon the requirements gathered from MECP, we have identified the requirement is to 
-create a predictive model that would provide an accurately identify the shortage periods of the
-medical products.
+Recommending New York city taxi drivers of optimal pickup locations along with the time of the day such that 
+they can maximize their number of trips and increase their profits. 
 
 
 ## Model Classes
+Based on the requirements we aim to use Supervised learning and Recommendation System. We plan to use a set of features for training the model which is tip amount, trip distance, pickup location, pickup time and spatial features (region clusters) for Random Forest regression with target variable being tip amount.   
 
-Based on requirements we aim to use models that adopt supervised learning to train since we 
-need to identify patterns of when a product goes out of stock and during which days in the year.
+Similarly, for content-based recommendations, hour of day, day of week and fare amount along with pickup and drop locations. And for collaborative filtering the features would be tip amount, fare amount and tip distance. 
 
 
 ## Algorithms
 
-1. **Random Forest:** Random Forest is used to analyze the factors contributing to stock 
-availability and predict the likelihood of a product going out of stock based on historical 
-data and various product attributes. By training a Random Forest classifier using the 
-columns like product descriptions, prices, manufacturer numbers, etc. it is possible to 
-handle to handle both categorical and numerical features and identify influential factors 
-impacting stock availability.
+1. **Random Forest:** 
+   Random Forest is an ensemble learning method that operates by constructing multiple independent decision trees during training and giving the mean prediction of the individual trees for regression tasks. For this project, Random Forest can accommodate features like tip amount, trip distance, pickup location, pickup time and spatial features like clustering of regions.
 
-2. **Time Series Analysis:** Time Series Analysis is a robust method for grasping temporal 
-patterns in stock availability data, aiding in understanding factors leading to product 
-stockouts. Techniques like Autoregressive Integrated Moving Average (ARIMA), Seasonal 
-ARIMA (SARIMA), or Prophet predicts future stock levels based on historical data. These 
-models using forecast analysis and data decomposition capture seasonality, trends, and 
-other temporal patterns, offering insights into demand fluctuations and potential 
-shortages
+   This can be achieved by using K-means clustering to create those spatial features. Model will be trained on the given features with tip amount being the target variable. The trained model can make predictions on new data with which it can suggest optimal areas for taxi drivers.
+
+3. **Content Based Recommendation:**
+   Content-based filtering algorithm generates personalized recommendations for taxi drivers based on time, day, and spatial attributes extracted from historical trip data. In addition to features such as hour of the day, day of the week, rate code, and fare amount, we incorporate trip start and end locations represented by latitude and longitude coordinates.  
+
+    Utilizing these spatial features, we calculate the similarity between trips using metrics like cosine similarity or Euclidean distance, considering both temporal and spatial aspects. Trips that closely match the time, day, and location characteristics of the driver's current position are identified and ranked based on their similarity scores. The top-ranked trips are then recommended to the driver as optimal routes for maximizing earnings in similar time, day, and location contexts. By leveraging both temporal and spatial features, our algorithm assists drivers in selecting trips and positioning themselves strategically to maximize profitability
+
+3. **Collaborative Filtering:** 
+ Using ALS - Alternating Least Squares (ALS) can be applied to decompose the user-item matrix of taxi trip data. Optimize the decomposition iteratively to minimize reconstruction error while factoring in attributes like tip amount, fare amount, and trip distance. Utilize the learned matrices to predict preferences for pickup locations, recommending those with higher estimated values for optimal trips. 
+ 
+
+   Using SVD: We can use Singular Value Decomposition (SVD) to break down the user-item matrix into meaningful components, capturing latent factors within the taxi trip data. Select a reduced rank approximation to retain essential patterns related to tip amount, fare amount, and trip distance. Recommend pickup locations based on reconstructed preferences, prioritizing areas associated with higher estimated values for a superior taxi trip experience. 
+ 
