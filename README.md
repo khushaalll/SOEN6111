@@ -15,20 +15,20 @@ New York Taxi and Limousine Commission provides dataset for its yellow taxis eve
 
 The Yellow Taxi dataset of 2023 consists of a set of columns but for this research question, we are mainly focussed on the following columns, 
 
-tpep_pickup_datetime – The taxi’s pickup date and time  
-tpep_dropoff_datetime – The taxi’s dropoff date and time 
-Trip_distance – The total trip distance covered by the taxi 
-PULocationID – The Pickup location ID of the taxi. ID can be referenced by another document 		   which has the location for each ID 
-Pickup_longitude – The pickup location’s longitute 
-Pickup_latitude – The pickup location’s latitute 
-Dropoff_longitude – The pickup location’s longitute 
-Dropoff_latitude – The pickup location’s latitute 
-Fare_amount – The total fare for the trip calculated by the meter 
-Tip_amount – Tip amount provided by the passenger 
+tpep_pickup_datetime – The taxi’s pickup date and time<br>
+tpep_dropoff_datetime – The taxi’s dropoff date and time <br>
+Trip_distance – The total trip distance covered by the taxi <br>
+PULocationID – The Pickup location ID of the taxi. ID can be referenced by another document  which has the location for each ID <br>
+Pickup_longitude – The pickup location’s longitute <br>
+Pickup_latitude – The pickup location’s latitute <br>
+Dropoff_longitude – The pickup location’s longitute <br>
+Dropoff_latitude – The pickup location’s latitute <br>
+Fare_amount – The total fare for the trip calculated by the meter <br>
+Tip_amount – Tip amount provided by the passenger <br>
 Total_amount – The combined amount of fare and tips amount which excludes other data like toll amount, mta_tax, extra fee and airport charge.  
 
 This dataset is derived from the New York City TLC website,  
-[NYC Dataset] {https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page}
+NYC Dataset :-  https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page 
 
 ## Research Question
 
