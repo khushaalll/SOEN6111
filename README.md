@@ -57,10 +57,10 @@ Similarly, for content-based recommendations, hour of day, day of week and fare 
 3. **Collaborative Filtering:** 
  Using ALS - Alternating Least Squares (ALS) can be applied to decompose the user-item matrix of taxi trip data. Optimize the decomposition iteratively to minimize reconstruction error while factoring in attributes like tip amount, fare amount, and trip distance. Utilize the learned matrices to predict preferences for pickup locations, recommending those with higher estimated values for optimal trips. 
 
+   Using SVD: We can use Singular Value Decomposition (SVD) to break down the user-item matrix into meaningful components, capturing latent factors within the taxi trip data. Select a reduced rank approximation to retain essential patterns related to tip amount, fare amount, and trip distance. Recommend pickup locations based on reconstructed preferences, prioritizing areas associated with higher estimated values for a superior taxi trip experience. 
 
+
+ 
 ## Notebook link
 https://colab.research.google.com/drive/1Oa4Jij4mOP0ugC3hBTAMXRdAkHtd65Mv?usp=sharing
- 
-
-   Using SVD: We can use Singular Value Decomposition (SVD) to break down the user-item matrix into meaningful components, capturing latent factors within the taxi trip data. Select a reduced rank approximation to retain essential patterns related to tip amount, fare amount, and trip distance. Recommend pickup locations based on reconstructed preferences, prioritizing areas associated with higher estimated values for a superior taxi trip experience. 
  
