@@ -33,7 +33,7 @@ they can maximize their number of trips and increase their profits.
 
 
 ## Model Classes
-Based on the requirements we aim to use Supervised learning. We plan to use a set of features for training the model which is  pickup longitude, pickup_latitude,day of week, dropoff_latitude, dropoff_longitude, pickup time and spatial features (region clusters) for both linear regression and random forest regression. 
+Based on the requirements we aim to use Supervised learning. We plan to use a set of features for training the model which is  pickup longitude, pickup_latitude,day of week, dropoff_latitude, dropoff_longitude, pickup time and spatial features (region clusters) for both Random-Forest and XGBoost as classifiers for optimal and non-optimal labels. 
 
 
 ## Algorithms
