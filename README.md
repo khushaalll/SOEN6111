@@ -38,12 +38,11 @@ Based on the requirements we aim to use Supervised learning. We plan to use a se
 
 ## Algorithms
 
-1. **Linear Regression:**
-    Linear regression is a statistical model and is used to predict the best pickup locations for taxi drivers based on historical data. The model considers the size of pickup location clusters as independent variables and latitude-longitude coordinates as dependent variables. By fitting a polynomial regression model, the algorithm identifies patterns in the relationship between cluster sizes and pickup locations. This will enable to predict optimal pickup locations for each weekday in a given month.
-
-2. **Random Forest:**
+1. **Random Forest:**
     Random Forest is an ensemble learning method that builds multiple decision trees during training and outputs the average prediction of these trees. In this scenario, it's used to predict optimal taxi pickup locations for each weekday in a given month. It involves clustering with K-means, and training based on cluster sizes and centers and then using these models to predict the optimal best location to maximize pickups. 
 
+2. **XGB Classifier:**
+    Similar to Random Forest, XGB Classifier is also an ensemble learning method which combines predictions from multiple weak learners (often decision trees) to create a stronger final model. This approach helps reduce the risk of overfitting and improves generalization performance. In our project, it's used to train our model and to predict the 'optimal' or 'not optimal' class labels. As stated above in Random Forest, XGBoost also uses 'pickup_latitude' and 'pickup_longitude' as features which are resampled and balanced to reduce class implanace.
  
 ## Notebook link
 [https://colab.research.google.com/drive/1Oa4Jij4mOP0ugC3hBTAMXRdAkHtd65Mv?usp=sharing](https://colab.research.google.com/drive/1yDXrAuZqOuk6W3UVuvbRWt6YO8V_GqQx?usp=sharing#scrollTo=9cN4gnPYheqS)
