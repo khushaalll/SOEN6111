@@ -45,5 +45,5 @@ Based on the requirements we aim to use Supervised learning. We plan to use a se
     Similar to Random Forest, XGB Classifier is also an ensemble learning method which combines predictions from multiple weak learners (often decision trees) to create a stronger final model. This approach helps reduce the risk of overfitting and improves generalization performance. In our project, it's used to train our model and to predict the 'optimal' or 'not optimal' class labels. As stated above in Random Forest, XGBoost also uses 'pickup_latitude' and 'pickup_longitude' as features which are resampled and balanced to reduce class implanace.
  
 ## Notebook link
-[https://colab.research.google.com/drive/1Oa4Jij4mOP0ugC3hBTAMXRdAkHtd65Mv?usp=sharing](https://colab.research.google.com/drive/1yDXrAuZqOuk6W3UVuvbRWt6YO8V_GqQx?usp=sharing#scrollTo=9cN4gnPYheqS)
+[Group 31 project](https://colab.research.google.com/drive/1EHlgB4C1LNSzTSmRgBP_n4IfICSr1Am4?usp=sharing)
  
